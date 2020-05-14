@@ -16,3 +16,20 @@
 @import "bootstrap";
 
 @import "**/*";
+
+body {
+  background-color:#292A2C;
+  color: #E2E6E8;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+a {
+  color: #2ACFE5;
+  &:hover {
+    color: #ffaa1d;   
+  }
+}

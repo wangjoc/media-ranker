@@ -1,0 +1,38 @@
+// Styling of tables.
+
+
+.table {
+  background-color: #4E4F53;
+  color: #fff;
+}
+
+.table-hover> tbody> tr:hover{
+  background-color:#ffaa1d;
+}
+
+
+
+.status-false {
+  color: #A5A8B4;
+}
+
+[class$=-true] {
+}
+
+.driver {
+  .list-view ul {
+    padding: 0;
+    margin: 0;
+  }
+  .list-view li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+}
+
