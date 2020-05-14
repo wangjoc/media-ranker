@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+  has_and_belongs_to_many :users
+
   validates :category, presence: true, inclusion: { 
     in: Work.all.map {|t| t.category}.uniq,
     message: "not a valid vategory" }
