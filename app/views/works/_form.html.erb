@@ -14,8 +14,6 @@
 
 <% categories = Work.all.map {|t| t.category}.uniq %>
 
-<%# ["select a category"] + categories %>
-
 <%= form_with model: @work, class: 'user-form' do |f| %>
   <div class="form-group">
     <%= f.label :category %><br>
