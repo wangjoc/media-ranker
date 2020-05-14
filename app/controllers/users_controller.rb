@@ -1,4 +1,18 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
+  def show
+    username = params[:user][:username]
+    @user = User.find_by(username: username)
+
+    if @user.nil?
+      redirect_to users_path
+      return
+    end
+  end
+
   def login_form
     @user = User.new
   end

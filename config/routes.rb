@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'pages/home'
 
   resources :works
-
+  resources :users, only: [:index, :show]
 
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"

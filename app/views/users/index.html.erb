@@ -1,0 +1,33 @@
+<h1>ALL USERS</h1>
+
+<div class="driver container-lg">
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+      <th>Username</th>
+      <th>Votes</th>
+      <th>Joined</th>
+      </tr>
+    <thead>
+
+    <tbody>
+      <% @users.each do |user|  %>
+        <tr data-path="<%= work_path(user)%>" >
+          <td><%= user.username %></td>
+          <td><%= "Vote Holder" %></td>
+          <td><%= user.updated_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+<%= link_to "Back to Media List", root_path %>
+
+
+
+
