@@ -4,7 +4,6 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-4">
         <div class="info-panel">
           <h3><%= @work.category.capitalize %> Information</h3>
           <ul>
@@ -15,10 +14,34 @@
           </ul>
         </div>
 
-        <%= button_to "Edit Work", edit_work_path(@work.id), method: :get %>
-        <%= button_to "Delete Work", work_path(@work.id), method: :delete %>
+        <section>
+          <%= button_to "Back to Media Ranks", root_path, method: :get %>
+          <%= button_to "Edit Work", edit_work_path(@work.id), method: :get %>
+          <%= button_to "Upvote", upvote_path(@work.id), method: :patch %>
+          <%= button_to "Delete Work", work_path(@work.id), method: :delete %>
+        </section>
 
-      </div>  
+        <div class="driver container-lg">
+          <h3><%="#{@work.users.length} Votes for this #{@work.category}"%></h3>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Date</th>
+              </tr>
+            <thead>
+
+            <tbody>
+              <% @work.users.each do |user|  %>
+                <tr data-path="<%= user_path(user)%>" >
+                  <td><%= user.username %></td>
+                  <td><%= user.created_at %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
     </div>  
   </div>
 </div>

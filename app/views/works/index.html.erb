@@ -7,27 +7,27 @@
   <h3><%= cat.capitalize %>s</h3>
   <div class="driver container-lg">
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Creator</th>
-        <th>Publication Year</th>
-        <th>Edit</th>
-      </tr>
-    <thead>
-
-    <tbody>
-      <% Work.where(:category => cat).order('title').each do |work|  %>
-        <tr data-path="<%= work_path(work)%>" >
-          <td><%= work.title %></td>
-          <td><%= work.creator %></td>
-          <td><%= work.publication_year %></td>
-          <td><%= button_to "Upvote", upvote_path(work.id), method: :patch %> </td>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Creator</th>
+          <th>Publication Year</th>
+          <th>Edit</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      <thead>
+
+      <tbody>
+        <% Work.where(:category => cat).order('title').each do |work|  %>
+          <tr data-path="<%= work_path(work)%>" >
+            <td><%= work.title %></td>
+            <td><%= work.creator %></td>
+            <td><%= work.publication_year %></td>
+            <td><%= button_to "Upvote", upvote_path(work.id), method: :patch %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
   </div>
 

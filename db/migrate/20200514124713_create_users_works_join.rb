@@ -3,6 +3,8 @@ class CreateUsersWorksJoin < ActiveRecord::Migration[6.0]
     create_table :users_works do |t|
       t.belongs_to :user, index: true
       t.belongs_to :work, index: true
+
+      t.timestamps
     end
   end
 end
