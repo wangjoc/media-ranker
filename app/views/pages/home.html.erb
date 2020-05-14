@@ -17,7 +17,7 @@
       <% items = Work.where(:category => cat).order('title') %>
       <% if !items.length.nil? %>
         <% items[0..[10, items.length].min].each do |work| %>
-          <%= work.title %> by <%= work.creator %><br>
+          <%= link_to "#{work.title}", work_path(work.id) %> by <%= work.creator %><br>
         <% end %>
       <% else %>
         <%= "There are no works in this category" %>
