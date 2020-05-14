@@ -10,6 +10,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% flash.each do |name, message| %>
+      <div class="alert alert-<%= name %>" role="alert">
+        <%= message.html_safe %>
+      </div>
+    <% end %>
+
+    <header class="text-center"></header>
+
+    <main role="main">
+      <%= render "shared/nav" %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </main>
   </body>
 </html>
