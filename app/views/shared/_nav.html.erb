@@ -4,5 +4,8 @@
     <%= link_to root_path do%><li>View all media</li><%end%>
     <%= link_to works_path do%><li>View all media</li><%end%>
     <%= link_to new_work_path do%><li>Add a new work</li><%end%>
+    <%= link_to login_path do%><li>Login</li><%end%>
+    <%= link_to logout_path, method: :post do%><li>Logout</li><%end%>
+    <%= link_to current_user_path do%><li>Current User</li><%end%>
   </ul>
 </nav>
