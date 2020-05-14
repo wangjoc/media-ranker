@@ -5,7 +5,10 @@
     <%= link_to works_path do%><li>View all media</li><%end%>
     <%= link_to works_path do%><li>View all users</li><%end%>
     <%= link_to new_work_path do%><li>Add a new work</li><%end%>
-    <%= link_to login_path do%><li>Login</li><%end%>
-    <%= link_to logout_path, method: :post do%><li>Logout</li><%end%>
+    <% if session[:user_id] %>
+      <%= link_to logout_path, method: :post do%><li>Logout from <%=   User.find_by(id: session[:user_id]).username %></li><%end%>
+    <% else %>
+      <%= link_to login_path do%><li>Login</li><%end%>
+    <% end %>
   </ul>
 </nav>
