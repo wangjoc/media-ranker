@@ -1,0 +1,54 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.home {
+  a {
+    font-size: 30px;
+    color: #000;
+  }
+
+
+  h3 {
+  margin-top: 20px;
+}
+
+.col-md-6 {
+  margin-top: 20px;
+}
+
+ul {
+  padding:0;
+  margin: 0;
+}
+
+li {
+  padding: 90px 0px;
+  margin: 20px 0px;
+  list-style: none;
+  background-color: #3E3F41;
+  background-image: image-url(asset_path("highway.jpg"));
+  filter: grayscale(100%);
+  background-size: 200%;
+  border-radius: 12px;
+  &:hover {
+    filter: grayscale(0%);
+  }
+}
+}
+
+#view-passengers {
+  background-position: top left;
+}
+
+#add-passengers {
+  background-position: bottom left;
+}
+
+#view-drivers {
+  background-position: top right;
+}
+
+#add-drivers {
+  background-position: bottom right;
+}

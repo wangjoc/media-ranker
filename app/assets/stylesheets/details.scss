@@ -1,0 +1,32 @@
+// Styling of details. 
+
+ul {
+  padding: 0;
+  margin: 6px 0;
+}
+
+li {
+  list-style: none;
+}
+
+.profile {
+  .row>div>div {
+    background-color: #3C3D40;
+    padding: 30px;
+    margin: 0 10px;
+    border-radius: 12px;
+  }
+}
+
+h3 {
+  text-align: center;
+}
+
+.info {
+  margin: 0 auto;
+  padding: 60px;
+  max-width: 40vw;
+  background-color: #3C3D40;
+  border-radius: 12px;
+}
+

@@ -1,0 +1,25 @@
+<div class="profile">
+  <h1>Details for <%= @work.title %></h1>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-4">
+        <div class="info-panel">
+          <h3><%= @work.category.capitalize %> Information</h3>
+          <ul>
+            <li><span>Title:</span> <%= @work.title %></li>
+            <li><span>Creator:</span> <%= @work.creator %> </li>
+            <li><span>Publication Year:</span> <%= @work.publication_year %>
+            <li><span>Description: </span> <%= @work.description %> </li>
+          </ul>
+        </div>
+
+        <%= button_to "Edit Work", edit_work_path(@work.id), method: :get %>
+
+      </div>  
+    </div>  
+  </div>
+</div>
+
+
