@@ -66,6 +66,33 @@ class WorksController < ApplicationController
     return
   end
 
+  def upvote
+    if session[:user_id].nil?
+      flash[:info] = "Unable to upvote unless logged in. Please login first."
+      redirect_to login_path
+      return
+    end
+
+    work = Work.find_by(id: params[:id])
+    user = User.find_by(id: session[:user_id])
+
+    if work.nil? || user.nil?
+      head :not_found
+      return
+    end
+
+    if user.works.include? work
+      flash[:warning] = "You have already voted on this work!"
+    else
+      flash[:success] = "You have successfully voted on this work!"
+      user.works << work
+    end
+
+    # change so that it will go back to wherever it was before
+    redirect_to works_path
+    return
+  end
+
   private
 
   def work_params
