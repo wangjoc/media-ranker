@@ -16,6 +16,7 @@
         </div>
 
         <%= button_to "Edit Work", edit_work_path(@work.id), method: :get %>
+        <%= button_to "Delete Work", work_path(@work.id), method: :delete %>
 
       </div>  
     </div>  
