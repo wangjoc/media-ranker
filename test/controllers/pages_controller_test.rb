@@ -1,7 +1,8 @@
 require "test_helper"
 
 describe PagesController do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  it "must get home" do
+    get pages_home_url
+    must_respond_with :success
+  end
 end
