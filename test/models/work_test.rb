@@ -78,4 +78,26 @@ describe Work do
       expect(result).must_equal true
     end
   end
+
+  describe 'relations' do
+    before do
+      @work = works(:saucepan)
+
+      @user_one = users(:hatter)
+      @user_two = users(:howl)
+
+      votes(:hatter_vote_saucepan)
+      votes(:howl_vote_saucepan)
+    end
+
+    it "can establish multiple votes and indirect relation to works" do
+      expect(@work.votes.length).must_equal 2
+      expect(@work.users.length).must_equal 2
+
+      expect(@work.users[0].id).must_equal @user_one.id
+      expect(@work.users[1].id).must_equal @user_two.id
+    end
+  end
+
+
 end

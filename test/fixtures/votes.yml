@@ -4,4 +4,7 @@ hatter_vote_song:
 hatter_vote_saucepan:
   user: hatter
   work: saucepan
+howl_vote_saucepan:
+  user: howl
+  work: saucepan
 
