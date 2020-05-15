@@ -5,7 +5,6 @@ describe User do
   describe 'validations' do
     before do
       @user = users(:hatter)
-      # @book = Book.new(title: 'test book', user: user)
     end
 
     it 'is valid when all fields are present' do
@@ -28,4 +27,24 @@ describe User do
       expect(result).must_equal false
     end
   end
+
+  describe 'relations' do
+    before do
+      @user = users(:hatter)
+      @work_one = works(:song)
+      @work_two = works(:saucepan)
+
+      votes(:hatter_vote_song)
+      votes(:hatter_vote_saucepan)
+    end
+
+    it "can establish multiple votes and indirect relation to works" do
+      expect(@user.votes.length).must_equal 2
+      expect(@user.works.length).must_equal 2
+
+      expect(@user.works[0].id).must_equal @work_one.id
+      expect(@user.works[1].id).must_equal @work_two.id
+    end
+  end
+
 end
