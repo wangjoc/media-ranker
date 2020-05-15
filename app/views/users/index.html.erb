@@ -13,7 +13,7 @@
 
     <tbody>
       <% @users.each do |user|  %>
-        <tr data-path="<%= work_path(user)%>" >
+        <tr class="clickable-tr" data-path="<%= work_path(user)%>" >
           <td><%= user.username %></td>
           <td><%= "Vote Holder" %></td>
           <td><%= user.updated_at %></td>
