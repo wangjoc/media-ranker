@@ -9,7 +9,9 @@ class Work < ApplicationRecord
   validates :publication_year, presence: true
   validates :description, presence: true
 
-
+  def order_works
+    return Work.left_joins(:users).group(:id).order('COUNT(users) DESC')
+  end
 
   # def category_list
   #   return works.all.map {|t| t.category}.uniq

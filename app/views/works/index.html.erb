@@ -1,6 +1,8 @@
 <h1>ALL WORKS</h1>
 
-<% categories = Work.all.map {|t| t.category}.uniq %>
+<% ordered_works = order_works%>
+
+<% categories = ordered_works.map {|t| t.category}.uniq %>
 
 <% categories.each do |cat| %>
 
@@ -10,6 +12,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>Votes</th>
           <th>Title</th>
           <th>Creator</th>
           <th>Publication Year</th>
@@ -18,8 +21,9 @@
       <thead>
 
       <tbody>
-        <% Work.where(:category => cat).order('title').each do |work|  %>
+        <% ordered_works.select {|work| work.category == cat }.each do |work|  %>
           <tr class="clickable-tr" data-path="<%= work_path(work)%>" >
+            <td><%= work.users.length %></td>
             <td><%= work.title %></td>
             <td><%= work.creator %></td>
             <td><%= work.publication_year %></td>
