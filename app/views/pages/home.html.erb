@@ -5,14 +5,10 @@
 <section>
   <% spotlight = ordered_works[0] %>
   <h2>Media Spotlight: <%= link_to "#{spotlight.title}", work_path(spotlight.id) %> by <%= spotlight.creator %></h2>
-  <p><%= spotlight.description %></p>
+  <p><%= spotlight.users.length %> votes - <%= spotlight.description %></p>
 </section>
 
 <hr>
-
-<% ordered_works.each do |x| %>
-  <%= "#{x.title} #{x.users.length}"%>
-<% end %>
 
 <section>
   <% categories = ordered_works.map {|t| t.category}.uniq %>
