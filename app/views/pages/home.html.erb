@@ -1,23 +1,29 @@
 <% content_for(:title) { 'Media Ranker - Home' } %>
 
+<% ordered_works = order_works %>
+
 <section>
-  <% spotlight = Work.all.sample %>
+  <% spotlight = ordered_works[0] %>
   <h2>Media Spotlight: <%= link_to "#{spotlight.title}", work_path(spotlight.id) %> by <%= spotlight.creator %></h2>
   <p><%= spotlight.description %></p>
 </section>
 
 <hr>
 
+<% ordered_works.each do |x| %>
+  <%= "#{x.title} #{x.users.length}"%>
+<% end %>
+
 <section>
-  <% categories = Work.all.map {|t| t.category}.uniq %>
+  <% categories = ordered_works.map {|t| t.category}.uniq %>
   <% categories.each do |cat| %>
     <h3>Top <%= cat.capitalize %>s</h3>
 
     <div class="driver container-lg">
-      <% items = Work.where(:category => cat).order('title') %>
+      <% items = ordered_works.select {|work| work.category == cat } %>
       <% if !items.length.nil? %>
         <% items[0..[10, items.length].min].each do |work| %>
-          <%= link_to "#{work.title}", work_path(work.id) %> by <%= work.creator %><br>
+          <%= link_to "#{work.title}", work_path(work.id) %><%= " by #{work.creator} #{work.users.length} votes" %><br>
         <% end %>
       <% else %>
         <%= "There are no works in this category" %>

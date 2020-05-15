@@ -9,6 +9,8 @@ class Work < ApplicationRecord
   validates :publication_year, presence: true
   validates :description, presence: true
 
+
+
   # def category_list
   #   return works.all.map {|t| t.category}.uniq
   # end
