@@ -13,9 +13,9 @@
 
     <tbody>
       <% @users.each do |user|  %>
-        <tr class="clickable-tr" data-path="<%= work_path(user)%>" >
+        <tr class="clickable-tr" data-path="<%= user_path(user)%>" >
           <td><%= user.username %></td>
-          <td><%= "Vote Holder" %></td>
+          <td><%= user.works.length %></td>
           <td><%= user.updated_at %></td>
         </tr>
       <% end %>
