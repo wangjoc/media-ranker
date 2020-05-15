@@ -99,5 +99,15 @@ describe Work do
     end
   end
 
+  describe 'custom method - order_works' do
+    before do
+      @ordered_works = Work.left_joins(:users).group(:id).order('COUNT(users) DESC') #should be calling on order_works method to actually testing model methods? 
+    end
 
+    it 'can order works by vote count' do
+      expect(@ordered_works[0].id).must_equal works(:saucepan).id
+      expect(@ordered_works[1].id).must_equal works(:song).id
+      expect(@ordered_works[2].id).must_equal works(:castle).id
+    end
+  end
 end
