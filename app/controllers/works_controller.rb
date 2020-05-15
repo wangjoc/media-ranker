@@ -88,8 +88,14 @@ class WorksController < ApplicationController
     if user.works.include? work
       flash[:warning] = "You have already voted on this work!"
     else
-      flash[:success] = "You have successfully voted on this work!"
-      user.works << work
+      new_vote = Vote.new(user_id: user.id, work_id: work.id)
+
+      if new_vote.save
+        flash[:success] = "You have successfully voted on this work!"
+      else
+        render :new, status: :bad_request
+        return
+      end
     end
 
     # change so that it will go back to wherever it was before

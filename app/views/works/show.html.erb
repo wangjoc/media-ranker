@@ -33,9 +33,9 @@
 
             <tbody>
               <% @work.users.each do |user|  %>
-                <tr data-path="<%= user_path(user)%>" >
+                <tr class="clickable-tr" data-path="<%= user_path(user)%>" >
                   <td><%= user.username %></td>
-                  <td><%= user.created_at %></td>
+                  <td><%= Vote.find_by(user_id: user.id, work_id: @work.id).created_at %></td>
                 </tr>
               <% end %>
             </tbody>
