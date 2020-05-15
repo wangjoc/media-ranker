@@ -1,8 +1,7 @@
 <h1>ALL WORKS</h1>
 
-<% ordered_works = order_works%>
-
-<% categories = ordered_works.map {|t| t.category}.uniq %>
+<% ordered_works = order_works %>
+<% categories = ["album", "book", "movie"] %>
 
 <% categories.each do |cat| %>
 

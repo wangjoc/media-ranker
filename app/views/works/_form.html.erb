@@ -12,7 +12,7 @@
 <h3><%= "#{action_name}" %> work</h3>
 <p>All works must have a title, creator, publication year, and description.</p>
 
-<% categories = Work.all.map {|t| t.category}.uniq %>
+<% categories = ["album", "book", "movie"] %>
 
 <%= form_with model: @work, class: 'user-form' do |f| %>
   <div class="form-group">
