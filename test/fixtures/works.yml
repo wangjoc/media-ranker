@@ -1,0 +1,18 @@
+song: 
+  category: book
+  title: Song
+  creator: John Donne
+  publication_year: 1631
+  description: It's about submarines...apparently
+saucepan: 
+  category: album
+  title: Sosban Fach
+  creator: Talog Williams
+  publication_year: 1972
+  description: Welsh Rugby and saucepans
+castle: 
+  category: movie
+  title: Howl's Moving Castle
+  creator: Hayao Miyazaki
+  publication_year: 2004
+  description: The story is set in a fictional kingdom where both magic and early 20th-century technology are prevalent, against the backdrop of a war with another kingdom. The film tells the story of a young, content milliner named Sophie who is turned into an old woman by a witch who enters her shop and curses her. She encounters a wizard named Howl, and gets caught up in his resistance to fighting for the king.
