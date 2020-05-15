@@ -1,5 +1,6 @@
 class Work < ApplicationRecord
-  has_and_belongs_to_many :users
+  has_many :votes
+  has_many :users, :through => :votes
 
   validates :category, presence: true, inclusion: { 
     in: Work.all.map {|t| t.category}.uniq,
