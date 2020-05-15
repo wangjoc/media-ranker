@@ -1,14 +1,18 @@
 class WorksController < ApplicationController
   def index
+    session[:return_to] = works_path
     @works = Work.all
   end
 
   def show
     @work = Work.find_by(id: params[:id])
+    
     if @work.nil?
       redirect_to works_path
       return
     end
+
+    session[:return_to] = work_path(@work.id)
   end
 
   def new
@@ -89,7 +93,7 @@ class WorksController < ApplicationController
     end
 
     # change so that it will go back to wherever it was before
-    redirect_to works_path
+    redirect_to session.delete(:return_to)
     return
   end
 
