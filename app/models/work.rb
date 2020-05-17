@@ -10,11 +10,11 @@ class Work < ApplicationRecord
   validates :publication_year, presence: true
   validates :description, presence: true
 
-  def order_works
+  def self.order_works
     return Work.left_joins(:users).group(:id).order('COUNT(users) DESC')
   end
 
-  def top_ten
+  def self.top_ten
     categories = {"album" => [], "book" => [], "movie" => []}
     ordered_works = order_works
 
