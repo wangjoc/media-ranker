@@ -18,18 +18,32 @@
 @import "**/*";
 
 body {
-  background-color:#292A2C;
-  color: #E2E6E8;
+  display: block;
+  background-color:#FFFFFF;
+  color: #64676A;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1 {
   text-align: center;
+  font-weight: bold;
+}
+
+h2 {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  color: #25A69A;
 }
 
 a {
-  color: #2ACFE5;
+  color:  #147E71;
   &:hover {
     color: #ffaa1d;   
   }
+}
+
+.btn {
+  color: white;
+  font-weight: bold;
 }
