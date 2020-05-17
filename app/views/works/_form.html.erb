@@ -8,35 +8,35 @@
   </ul>
 <% end %>
 
+<h2><%= "#{action_name}" %> Work</h2>
+
 <div class="container-sm">
-<h3><%= "#{action_name}" %> work</h3>
-<p>All works must have a title, creator, publication year, and description.</p>
+  <p>All works must have a category, title, creator, publication year, and description.</p>
 
-<% categories = ["album", "book", "movie"] %>
+  <% categories = ["album", "book", "movie"] %>
 
-<%= form_with model: @work, class: 'user-form' do |f| %>
-  <div class="form-group">
-    <%= f.label :category %><br>
-    <%= f.select :category, options_for_select(["select a category"] + categories), class: "form-control-lg" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, class: "form-control-lg", placeholder: "title"%>
-  </div>
-  <div class="form-group">
-    <%= f.label :creator %><br>
-    <%= f.text_field :creator, class: "form-control-lg", placeholder: "creator" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :publication_year %><br>
-    <%= f.text_field :publication_year, class: "form-control-lg", placeholder: "publication year" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :description %><br>
-    <%= f.text_field :description, class: "form-control-lg", placeholder: "description" %>
-  </div>
+  <%= form_with model: @work, class: 'user-form' do |f| %>
+    <div class="form-group">
+      <%= f.label :category %><br>
+      <%= f.select :category, options_for_select(["select a category"] + categories, @work.category), class: "form-control-lg" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: "form-control-lg", placeholder: "title"%>
+    </div>
+    <div class="form-group">
+      <%= f.label :creator %><br>
+      <%= f.text_field :creator, class: "form-control-lg", placeholder: "creator" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :publication_year %><br>
+      <%= f.text_field :publication_year, class: "form-control-lg", placeholder: "publication year" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %><br>
+      <%= f.text_field :description, class: "form-control-lg", placeholder: "description" %>
+    </div>
 
-  <%= f.submit action_name == "New" ? "Add new work" : "#{action_name} work" , class: "work-button" %>
-<% end %>
-</div>
+    <%= f.submit action_name == "New" ? "Add new work" : "#{action_name} work" , class: "work-button" %>
+  <% end %>
 </div>
