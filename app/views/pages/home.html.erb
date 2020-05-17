@@ -1,32 +1,33 @@
 <% content_for(:title) { 'Media Ranker - Home' } %>
+<% ordered_works = top_ten %>
 
-<% ordered_works = order_works %>
-
-<section>
-  <% spotlight = ordered_works[0] %>
-  <h2>Media Spotlight: <%= link_to "#{spotlight.title}", work_path(spotlight.id) %> by <%= spotlight.creator %></h2>
+<header class="spotlight">
+  <% spotlight = top_vote %>
+  <h2>Media Spotlight: <%= link_to "#{spotlight.title}", work_path(spotlight.id) %> by <%= spotlight.creator %></h2><br>
   <p><%= spotlight.users.length %> votes - <%= spotlight.description %></p>
-</section>
+</header>
 
 <hr>
 
-<section>
-  <% categories = ordered_works.map {|t| t.category}.uniq %>
-  <% categories.each do |cat| %>
-    <h3>Top <%= cat.capitalize %>s</h3>
-
-    <div class="driver container-lg">
-      <% items = ordered_works.select {|work| work.category == cat } %>
-      <% if !items.length.nil? %>
-        <% items[0..[10, items.length].min].each do |work| %>
-          <%= link_to "#{work.title}", work_path(work.id) %><%= " by #{work.creator} #{work.users.length} votes" %><br>
+<body>
+  <% categories = ["album", "book", "movie"] %>
+  <section class="top-ten">
+    <% top_ten.each do |cat, works| %>
+      <div class="top-ten-list">
+        <h3>Top <%= cat.capitalize %>s</h3>
+        <% if !works.length.nil? %>
+          <% works.each do |work| %>
+            <div class="top-ten-list-item">
+              <h4><%= link_to "#{work.title}", work_path(work.id) %></h4>
+              <%= " by #{work.creator}" %><br>
+              <p><%= "#{work.users.length} votes" %></p><br>
+            </div>
+          <% end %>
+        <% else %>
+          <%= "There are no works in this category" %>
         <% end %>
-      <% else %>
-        <%= "There are no works in this category" %>
-      <% end %>
-    </div>
-    
-
-  <% end %>
-</section>
+      </div>
+    <% end %>
+  </section>
+</body>
 

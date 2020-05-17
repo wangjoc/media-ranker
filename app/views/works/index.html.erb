@@ -1,12 +1,9 @@
-<h1>ALL WORKS</h1>
+<h2>List of Works</h2><br>
 
-<% ordered_works = order_works %>
-<% categories = ["album", "book", "movie"] %>
+<% top_ten.each do |cat, works| %>
 
-<% categories.each do |cat| %>
-
-  <h3><%= cat.capitalize %>s</h3>
-  <div class="driver container-lg">
+  <h3><%= cat.capitalize %>s</h3><br>
+  <div class="container-lg">
 
     <table class="table table-hover">
       <thead>
@@ -20,7 +17,7 @@
       <thead>
 
       <tbody>
-        <% ordered_works.select {|work| work.category == cat }.each do |work|  %>
+        <% works.each do |work|  %>
           <tr class="clickable-tr" data-path="<%= work_path(work)%>" >
             <td><%= work.users.length %></td>
             <td><%= work.title %></td>
