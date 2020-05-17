@@ -7,10 +7,5 @@ describe PagesController do
     get pages_home_url
     must_respond_with :success
   end
-
-  it "must redirect to login page if not logged in" do
-    get pages_home_url
-    must_respond_with :redirect
-  end
 end
 

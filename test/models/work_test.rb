@@ -1,7 +1,6 @@
 require "test_helper"
 
 describe Work do
-
   describe 'validations' do
     before do
       @work = works(:song)
@@ -141,6 +140,18 @@ describe Work do
         result = Work.top_vote
 
         expect(result.title).must_equal works(:saucepan).title
+      end
+
+      it "spotlight returns nil if there are no works" do
+        Work.all.each do |work|
+          work.votes.each do |vote|
+            vote.destroy
+          end
+          work.destroy
+        end
+
+        result = Work.top_vote
+        expect(result).must_be_nil
       end
     end
   end

@@ -2,8 +2,12 @@
 
 <header class="spotlight">
   <% spotlight = Work.top_vote %>
-  <h2>Media Spotlight: <%= link_to "#{spotlight.title}", work_path(spotlight.id) %> by <%= spotlight.creator %></h2><br>
-  <p><%= spotlight.users.length %> votes - <%= spotlight.description %></p>
+  <% if spotlight.nil? %>
+    <%= "There are currently no works available. Please enter some works to get started!"%>
+  <% else %>
+    <h2>Media Spotlight: <%= link_to "#{spotlight.title}", work_path(spotlight.id) %> by <%= spotlight.creator %></h2><br>
+    <p><%= spotlight.users.length %> votes - <%= spotlight.description %></p>
+  <% end %>
 </header>
 
 <hr>
