@@ -20,13 +20,21 @@ li {
 
 h3 {
   text-align: center;
+  margin: auto;
+  font-weight: bold;
+  color: #212529;
 }
 
 .info {
-  margin: 0 auto;
-  padding: 60px;
-  max-width: 40vw;
-  background-color: #3C3D40;
-  border-radius: 12px;
+  margin: auto 5%;
+  color: #212529;
 }
+
+.btn-container {
+  // display: flex;
+  // justify-content: space-between;
+  // max-width: 360px;
+  margin: auto 5%;
+}
+
 
