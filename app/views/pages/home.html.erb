@@ -1,5 +1,4 @@
 <% content_for(:title) { 'Media Ranker - Home' } %>
-<% ordered_works = Work.top_ten %>
 
 <header class="spotlight">
   <% spotlight = Work.top_vote %>
@@ -12,7 +11,7 @@
 <body>
   <% categories = ["album", "book", "movie"] %>
   <section class="top-ten">
-    <% top_ten.each do |cat, works| %>
+    <% Work.top_ten.each do |cat, works| %>
       <div class="top-ten-list">
         <h3>Top <%= cat.capitalize %>s</h3>
         <% if !works.length.nil? %>

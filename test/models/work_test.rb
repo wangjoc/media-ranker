@@ -135,5 +135,13 @@ describe Work do
         expect(result[1].title).must_equal works(:song).title
       end
     end
+
+    describe "spotlight" do
+      it "spotlight selects the work with highest vote" do
+        result = Work.top_vote
+
+        expect(result.title).must_equal works(:saucepan).title
+      end
+    end
   end
 end
