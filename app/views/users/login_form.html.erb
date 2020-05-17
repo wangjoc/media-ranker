@@ -1,6 +1,10 @@
-<%= form_with model: @user, class: 'login__form', url: login_path do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<h2>Login</h2>
 
-  <%= f.submit "Log In" %>
-<% end %>
+<div class="container-sm">
+  <%= form_with model: @user, class: 'login__form', url: login_path do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+
+    <%= f.submit "Log In" %>
+  <% end %>
+</div>
