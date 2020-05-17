@@ -1,4 +1,4 @@
-<h1>ALL USERS</h1>
+<h2>List of Users</h2>
 
 <div class="driver container-lg">
 
@@ -16,7 +16,7 @@
         <tr class="clickable-tr" data-path="<%= user_path(user)%>" >
           <td><%= user.username %></td>
           <td><%= user.works.length %></td>
-          <td><%= user.updated_at %></td>
+          <td><%= user.updated_at.strftime("%B %d, %Y") %></td>
         </tr>
       <% end %>
     </tbody>
