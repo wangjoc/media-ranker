@@ -7,6 +7,16 @@ $form-bg: #3E3F41;
   margin-top: 50px;
   max-width: 470px;
   background-color: $form-bg;
+
+  h3 {
+    color: white;
+    font-weight: bold;
+    margin: 0px
+  }
+
+  p {
+    color: white;
+  }
 }
 
 .user-form {
@@ -20,8 +30,10 @@ form {
   }
 
   label {
+    color: white;
     margin: 0;
     padding: 0;
+    font-size: 18px,
   }
 
   input {
