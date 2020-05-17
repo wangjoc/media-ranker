@@ -99,15 +99,41 @@ describe Work do
     end
   end
 
-  describe 'custom method - order_works' do
-    before do
-      @ordered_works = Work.left_joins(:users).group(:id).order('COUNT(users) DESC') #should be calling on order_works method to actually testing model methods? 
+  describe 'custom methods' do
+    describe "top ten" do
+      it "returns 0 if no works in category" do
+        result = Work.top_ten["movie"]
+        expect(result.length).must_equal 0
+      end 
+
+      it "returns the top works highest votes < 10 works" do
+        result = Work.top_ten["album"]
+        expect(result.length).must_equal 1
+      end 
+
+      it "returns the top ten highest votes > 10 works" do
+        15.times do |x|
+          Work.create({
+            category: "book",
+            title: x,
+            creator: "some creator",
+            publication_year: 2020,
+            description: "some description"
+          })
+        end
+
+        result = Work.top_ten["book"]
+        expect(result.length).must_equal 10
+      end 
     end
 
-    it 'can order works by vote count' do
-      expect(@ordered_works[0].id).must_equal works(:saucepan).id
-      expect(@ordered_works[1].id).must_equal works(:song).id
-      expect(@ordered_works[2].id).must_equal works(:castle).id
+    describe "order works" do
+      it "order works by highest vote" do
+        result = Work.order_works
+
+        expect(result[0].title).must_equal works(:saucepan).title
+        expect(result[1].title).must_equal works(:song).title
+      end
     end
   end
 end
