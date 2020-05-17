@@ -25,4 +25,8 @@ class Work < ApplicationRecord
 
     return categories
   end
+
+  def self.top_vote
+    return Work.left_joins(:users).group(:id).order('COUNT(users) DESC')[0]
+  end
 end

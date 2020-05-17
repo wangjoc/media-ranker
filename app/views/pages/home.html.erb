@@ -1,8 +1,8 @@
 <% content_for(:title) { 'Media Ranker - Home' } %>
-<% ordered_works = top_ten %>
+<% ordered_works = Work.top_ten %>
 
 <header class="spotlight">
-  <% spotlight = top_vote %>
+  <% spotlight = Work.top_vote %>
   <h2>Media Spotlight: <%= link_to "#{spotlight.title}", work_path(spotlight.id) %> by <%= spotlight.creator %></h2><br>
   <p><%= spotlight.users.length %> votes - <%= spotlight.description %></p>
 </header>
