@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :upvote]
+  before_action :require_login, only: [:upvote] 
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
   
   CATEGORIES = ["album", "book", "movie"]
 
@@ -69,7 +70,7 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    user = User.find_by(id: session[:user_id])
+    user = current_user
 
     if @work.nil? || user.nil?
       head :not_found
