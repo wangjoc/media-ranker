@@ -27,4 +27,24 @@ describe Vote do
       expect(@vote.errors.messages).must_include :work
     end
   end
+
+  describe 'relations' do
+    before do
+      @work = works(:saucepan)
+
+      @user_one = users(:hatter)
+      @user_two = users(:howl)
+
+      @vote_one = votes(:hatter_vote_saucepan)
+      @vote_two = votes(:howl_vote_saucepan)
+    end
+
+    it "each vote belongs to one user and one work" do
+      expect(@vote_one.user_id).must_equal @user_one.id
+      expect(@vote_two.user_id).must_equal @user_two.id
+
+      expect(@vote_one.work_id).must_equal @work.id
+      expect(@vote_two.work_id).must_equal @work.id
+    end
+  end
 end
