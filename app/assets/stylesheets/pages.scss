@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
 .home {
   a {
     font-size: 30px;
@@ -9,7 +10,7 @@
   }
 
 
-  h3 {
+  h2 {
   margin-top: 20px;
 }
 
@@ -34,21 +35,54 @@ li {
   &:hover {
     filter: grayscale(0%);
   }
-}
-}
-
-#view-passengers {
-  background-position: top left;
+  }
 }
 
-#add-passengers {
-  background-position: bottom left;
+.spotlight {
+  padding: 2rem;
+  display: block;
+
+  h2 {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  p {
+    font-style: italic;
+  }
 }
 
-#view-drivers {
-  background-position: top right;
+.top-ten {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+  margin: 5%;
+
+  h3 {
+    font-weight: bold;
+    border-bottom: 1px double #64676A;
+    width: 100%;
+    display: block;
+  }
 }
 
-#add-drivers {
-  background-position: bottom right;
+.top-ten-list {
+  box-sizing: border-box;
+}
+
+.top-ten-list-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+
+  h4 {
+    font-weight: bold;
+  }
+  
+  p {
+    color: #8C8F91;
+  }
 }
