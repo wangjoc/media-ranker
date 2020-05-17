@@ -1,12 +1,14 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :upvote]
+  
+  CATEGORIES = ["album", "book", "movie"]
+
   def index
     session[:return_to] = works_path
-    @works = Work.all
+    @works, @categories = Work.all, CATEGORIES
   end
 
-  def show
-    @work = Work.find_by(id: params[:id])
-    
+  def show    
     if @work.nil?
       redirect_to works_path
       return
@@ -23,8 +25,8 @@ class WorksController < ApplicationController
     @work = Work.new(work_params) 
 
     if @work.save 
-      redirect_to works_path
-      flash[:success] = "Successfully added new work: #{view_context.link_to @work.title, work_path(@work.id) }"
+      redirect_to work_path(@work.id)
+      flash[:success] = "Successfully added new work: #{view_context.link_to "##{@work.id} #{@work.title}", work_path(@work.id) }"
       return
     else 
       render :new, status: :bad_request
@@ -33,8 +35,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       head :not_found
       return
@@ -42,12 +42,11 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       head :not_found
       return
     elsif @work.update(work_params)
+      flash[:success] = "Successfully edited #{view_context.link_to @work.title, work_path(@work.id)}" 
       redirect_to work_path(@work.id)
       return
     else 
@@ -57,48 +56,39 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work = Work.find_by(id: params[:id])
-
-    if work.nil?
+    if @work.nil?
       head :not_found
       return
     end
 
-    work.destroy
+    @work.votes.each {|vote| vote.destroy}
+    @work.destroy
 
     redirect_to works_path
     return
   end
 
   def upvote
-    if session[:user_id].nil?
-      flash[:info] = "Unable to upvote unless logged in. Please login first."
-      redirect_to login_path
-      return
-    end
-
-    work = Work.find_by(id: params[:id])
     user = User.find_by(id: session[:user_id])
 
-    if work.nil? || user.nil?
+    if @work.nil? || user.nil?
       head :not_found
       return
     end
 
-    if user.works.include? work
-      flash[:warning] = "You have already voted on this work!"
+    if user.works.include? @work
+      flash[:warning] = "You have already voted on #{view_context.link_to @work.title, work_path(@work.id)}!"
     else
-      new_vote = Vote.new(user_id: user.id, work_id: work.id)
+      new_vote = Vote.new(user_id: user.id, work_id: @work.id)
 
       if new_vote.save
-        flash[:success] = "You have successfully voted on this work!"
+        flash[:success] = "You have successfully voted on #{view_context.link_to @work.title, work_path(@work.id)}!"
       else
         render :new, status: :bad_request
         return
       end
     end
 
-    # change so that it will go back to wherever it was before
     redirect_to session.delete(:return_to)
     return
   end
@@ -107,6 +97,10 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 
 end
