@@ -1,14 +1,23 @@
-<nav class="navbar navbar-static-top">
+<nav class="nav-header navbar-static-top">
   <ul class="container">
-    <%= link_to root_path do%><li class="logo">Media Ranker</li><%end%> 
-    <%= link_to root_path do%><li>View top media</li><%end%>
-    <%= link_to works_path do%><li>View all media</li><%end%>
-    <%= link_to users_path do%><li>View all users</li><%end%>
-    <%= link_to new_work_path do%><li>Add a new work</li><%end%>
-    <% if session[:user_id] %>
-      <%= link_to logout_path, method: :post do%><li>Logout from <%=   User.find_by(id: session[:user_id]).username %></li><%end%>
-    <% else %>
-      <%= link_to login_path do%><li>Login</li><%end%>
-    <% end %>
+    <%= link_to root_path do%><li class="logo"><h1>Media Ranker</h1></li><%end%>
+    
+    <div class="nav-body">
+      <%= link_to root_path do%><li>View top media</li><%end%>
+      <%= link_to works_path do%><li>View all media</li><%end%>
+      <%= link_to users_path do%><li>View all users</li><%end%>
+      <%= link_to new_work_path do%><li>Add a new work</li><%end%>
+    </div>
+
+    <br>
+
+    <div class="btn btn-info">
+      <% if session[:user_id] %>
+        <%= link_to "Log out from #{User.find_by(id: session[:user_id]).username}", logout_path, method: :post, :class => "btn" %>
+      <% else %>
+        <%= link_to "Login", login_path, :class => "btn" %>
+      <% end %>
+    </div>
   </ul>
+
 </nav>
