@@ -15,3 +15,25 @@ nav li {
   font-size: 26px;
   padding: 4px 20px;
 }
+
+.nav-header {
+  max-width: 100%;
+  background-color: #B2DFDB;
+  margin-bottom: 0.5rem;
+  padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.nav-body {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  justify-content: space-between;
+}
+
+
+
+
+
+
